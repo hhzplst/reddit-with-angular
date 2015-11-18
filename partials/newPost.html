@@ -1,20 +1,33 @@
-<div class="col-md-4 col-md-offset-4" ng-show="view.showform">
-  <form novalidate ng-submit="addPost()">
-    <div class="form-group">
+<div class="col-md-4 col-md-offset-4 newPost" ng-show="view.showform">
+  <form novalidate ng-submit="addPost(post)" name="form.newPost">
+    <div class="form-group" ng-class="{'has-error': newPost.title.$touched && newPost.title.$invalid, 'has-success': newPost.title.$valid}">
       <label for="title">Title:</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" ng-model="post.title" name="title" ng-required="true">
+      <div ng-messages="newPost.title.$error" ng-show="newPost.title.$touched">
+        <div ng-messages-include="./partials/message.html"></div>
+      </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': newPost.author.$touched && newPost.author.$invalid, 'has-success': newPost.author.$valid}">
       <label for="author">Author:</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" ng-model="post.author" name="author" ng-required="true">
+      <div ng-messages="newPost.author.$error" ng-show="newPost.author.$touched">
+        <div ng-messages-include="./partials/message.html"></div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="image">Image URL:</label>
-      <input type="text" class="form-control">
+    <div class="form-group" ng-class="{'has-error': newPost.url.$touched && newPost.url.$invalid, 'has-success': newPost.url.$valid}">
+      <label for="url">Image URL:</label>
+      <input type="text" class="form-control" ng-model="post.url" name="url" ng-required="true">
+      <div ng-messages="newPost.url.$error" ng-show="newPost.url.$touched">
+        <div ng-messages-include="./partials/message.html"></div>
+      </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': newPost.description.$touched && newPost.description.$invalid, 'has-success': newPost.description.$valid}">
       <label for="description">Description:</label>
-      <input type="text" class="form-control">
-    </div>         
+      <input type="text" class="form-control" ng-model="post.description" name="description" ng-required="true">
+      <div ng-messages="newPost.description.$error" ng-show="newPost.description.$touched">
+        <div ng-messages-include="./partials/message.html"></div>
+      </div>
+    </div> 
+    <input type="submit" class="center-block btn btn-info" ng-disabled="newPost.$invalid">        
   </form>
 </div>
