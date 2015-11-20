@@ -15,6 +15,8 @@ app.controller("PostController", function($scope, $rootScope){
   ];
   $scope.view = {};
   $scope.form = {};
+  $scope.up = 0;
+  $scope.down = 0;
   $scope.addPost = function(newPost){
     $scope.posts.push(newPost);
     $scope.post = {};

@@ -1,11 +1,11 @@
-<div class="col-md-8 col-md-offset-2" ng-repeat="post in posts">
+<div class="col-md-10 col-md-offset-1" ng-repeat="post in posts">
   <div class="thumbnail">
     <div class="container">
       <div class="col-md-5">
         <img ng-src="{{post.url}}">
       </div>
-      <div class="col-md-4">
-        <h2>{{post.title}}</h2>
+      <div class="col-md-5">
+        <h2>{{post.title}} | <span class="glyphicon glyphicon-arrow-up" ng-click="up=up+1" ng-class="{'positive':up>down && up>0}">{{up}}</span> <span class="glyphicon glyphicon-arrow-down" ng-click="down=down+1" ng-class="{'negative':down>up}">{{down}}</span> </h2>
         <h4>{{post.author}}</h4>
         <p>{{post.description}}</p>
         <p>more</p>  

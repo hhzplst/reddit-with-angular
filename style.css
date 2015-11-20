@@ -1,3 +1,11 @@
 .newPost{
   padding:20px;
 }
+
+.positive{
+  color:green;
+}
+
+.negative{
+  color:red;
+}
