@@ -1,1 +1,1 @@
-var app = angular.module("redditAngular", ["ngMessages"]);
+var app = angular.module("redditAngular", ["ngMessages", "angularMoment"]);

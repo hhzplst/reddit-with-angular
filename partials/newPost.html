@@ -1,33 +1,33 @@
 <div class="col-md-4 col-md-offset-4 newPost" ng-show="view.showform">
-  <form novalidate ng-submit="addPost(post)" name="form.newPost">
-    <div class="form-group" ng-class="{'has-error': newPost.title.$touched && newPost.title.$invalid, 'has-success': newPost.title.$valid}">
+  <form ng-submit="addPost(post)" name="form.newPost" novalidate >
+    <div class="form-group" ng-class="{'has-error': form.newPost.title.$touched && form.newPost.title.$invalid, 'has-success': form.newPost.title.$valid}">
       <label for="title">Title:</label>
       <input type="text" class="form-control" ng-model="post.title" name="title" ng-required="true">
-      <div ng-messages="newPost.title.$error" ng-show="newPost.title.$touched">
+      <div ng-messages="form.newPost.title.$error" ng-show="form.newPost.title.$touched">
         <div ng-messages-include="./partials/message.html"></div>
       </div>
     </div>
-    <div class="form-group" ng-class="{'has-error': newPost.author.$touched && newPost.author.$invalid, 'has-success': newPost.author.$valid}">
+    <div class="form-group" ng-class="{'has-error': form.newPost.author.$touched && form.newPost.author.$invalid, 'has-success': form.newPost.author.$valid}">
       <label for="author">Author:</label>
       <input type="text" class="form-control" ng-model="post.author" name="author" ng-required="true">
-      <div ng-messages="newPost.author.$error" ng-show="newPost.author.$touched">
+      <div ng-messages="form.newPost.author.$error" ng-show="form.newPost.author.$touched">
         <div ng-messages-include="./partials/message.html"></div>
       </div>
     </div>
-    <div class="form-group" ng-class="{'has-error': newPost.url.$touched && newPost.url.$invalid, 'has-success': newPost.url.$valid}">
+    <div class="form-group" ng-class="{'has-error': form.newPost.url.$touched && form.newPost.url.$invalid, 'has-success': form.newPost.url.$valid}">
       <label for="url">Image URL:</label>
       <input type="text" class="form-control" ng-model="post.url" name="url" ng-required="true">
-      <div ng-messages="newPost.url.$error" ng-show="newPost.url.$touched">
+      <div ng-messages="form.newPost.url.$error" ng-show="form.newPost.url.$touched">
         <div ng-messages-include="./partials/message.html"></div>
       </div>
     </div>
-    <div class="form-group" ng-class="{'has-error': newPost.description.$touched && newPost.description.$invalid, 'has-success': newPost.description.$valid}">
+    <div class="form-group" ng-class="{'has-error': form.newPost.description.$touched && form.newPost.description.$invalid, 'has-success': form.newPost.description.$valid}">
       <label for="description">Description:</label>
       <input type="text" class="form-control" ng-model="post.description" name="description" ng-required="true">
-      <div ng-messages="newPost.description.$error" ng-show="newPost.description.$touched">
+      <div ng-messages="form.newPost.description.$error" ng-show="form.newPost.description.$touched">
         <div ng-messages-include="./partials/message.html"></div>
       </div>
     </div> 
-    <input type="submit" class="center-block btn btn-info" ng-disabled="newPost.$invalid">        
+    <input type="submit" class="center-block btn btn-info" ng-disabled="form.newPost.$invalid">        
   </form>
 </div>
