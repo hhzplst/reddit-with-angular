@@ -9,3 +9,11 @@
 .negative{
   color:red;
 }
+
+.comment{
+  margin-left: 20px;
+}
+
+#commentSection{
+  margin-top:20px;
+}

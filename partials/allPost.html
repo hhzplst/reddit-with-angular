@@ -3,11 +3,10 @@
   <select name="select" ng-model="data.option">
     <option value="date" ng-selected="true">Date</option>
     <option value="up">Votes</option>
-    <option value="title">Title</option>
   </select>
   <br><br>    
 </div>
-<div class="col-md-10 col-md-offset-1" ng-repeat="post in posts | orderBy:data.option:true">
+<div class="col-md-10 col-md-offset-1" ng-repeat="post in posts track by $index | orderBy:data.option:true">
 
   <div class="thumbnail">
     <div class="container">
@@ -20,7 +19,24 @@
           <span class="glyphicon glyphicon-time"></span> <time>{{post.date | amCalendar }}</time>
         </h4>
         <p>{{post.description}}</p>
-        <p>more</p>  
+
+        <!-- Comment Section -->
+        <div id="commentSection">
+          <div class="col-md-6">
+            <span ng-class="{'glyphicon glyphicon-menu-down': post.comment.expand, 'glyphicon glyphicon-menu-right': !post.comment.expand}" ng-click="post.comment.expand = !post.comment.expand"></span>Comments
+            <div ng-repeat="comment in post.comments track by $index" ng-show="post.comment.expand">
+              <span class="comment">{{comment}}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <span class="glyphicon glyphicon-plus" ng-click="post.comment.show = !post.comment.show"></span> New Comment
+            <form ng-submit="addComment(post.comment, $index)" ng-show="post.comment.show" name="commentForm">
+              <input type="text" class="form-control" ng-required="true" placeholder="what do you think?" ng-model="post.comment.text" name="text">
+              <input type="submit" ng-disabled="commentForm.$invalid" class="btn btn-success form-control">
+            </form>
+          </div>         
+        </div>
+
       </div>
     </div>
   </div>
