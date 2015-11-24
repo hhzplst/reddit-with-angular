@@ -1,12 +1,17 @@
 <div class="col-md-2 col-md-offset-10">
   <span>Sort By:</span>
   <select name="select" ng-model="data.option">
-    <option value="date" ng-selected="true">Date</option>
+    <option value="date">Date</option>
     <option value="up">Votes</option>
+  </select>
+  <select name="order" ng-model="data.order">
+    <option value="false">Ascending</option>
+    <option value="true">Descending</option>
   </select>
   <br><br>    
 </div>
-<div class="col-md-10 col-md-offset-1" ng-repeat="post in posts track by $index | orderBy:data.option:true">
+
+<div class="col-md-10 col-md-offset-1" ng-repeat="post in posts | orderBy:data.option:postOrder(data.order) | filter: search.input track by $index">
 
   <div class="thumbnail">
     <div class="container">
@@ -23,7 +28,7 @@
         <!-- Comment Section -->
         <div id="commentSection">
           <div class="col-md-6">
-            <span ng-class="{'glyphicon glyphicon-menu-down': post.comment.expand, 'glyphicon glyphicon-menu-right': !post.comment.expand}" ng-click="post.comment.expand = !post.comment.expand"></span>Comments
+            <span ng-class="{'glyphicon glyphicon-menu-down': post.comment.expand, 'glyphicon glyphicon-menu-right': !post.comment.expand}" ng-click="post.comment.expand = !post.comment.expand"></span> {{post.comments.length}} <ng-pluralize count={{post.comments.length}} when="{'1': 'Comment', 'other': 'Comments'}"></ng-pluralize>
             <div ng-repeat="comment in post.comments track by $index" ng-show="post.comment.expand">
               <span class="comment">{{comment}}</span>
             </div>

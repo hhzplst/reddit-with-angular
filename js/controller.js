@@ -9,7 +9,7 @@ app.controller("PostController", function($scope, $rootScope){
       down: 0,
       date: "Sun Nov 15 2015 16:29:31 GMT-0800 (PST)",
       comment: {show: false, text:""},
-      comments: ["nice!", "great!"]
+      comments: []
     },
     {
       url:"http://lorempixel.com/g/400/200/", 
@@ -20,7 +20,7 @@ app.controller("PostController", function($scope, $rootScope){
       down: 0,
       date: "Tue Nov 17 2015 16:29:31 GMT-0800 (PST)",
       comment: {show: false, text:""},
-      comments: ["nice!", "great!"]
+      comments: ["nice!"]
     }
   ];
   $scope.view = {};
@@ -46,4 +46,12 @@ app.controller("PostController", function($scope, $rootScope){
     $scope.posts[index].comment.text = "";
     $scope.posts[index].comment.show = false;
   };
+  $scope.postOrder = function(order){
+    if (order === "true"){
+      return true; 
+    }else{
+      return false;
+    }
+  };
+
 });
